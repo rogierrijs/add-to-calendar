@@ -1,17 +1,14 @@
 ## AddToCalendar
-[Add to Calendar ]
+Widget for Mendix, based on the datebook.dev extension
 
 ## Features
-[feature highlights]
+Add appointments to your online calendars (outlook, google, yahoo, iCal)
 
 ## Usage
-[step by step instructions]
+Just implement the widget on your page, and fill in the required fields.
 
 ## Demo project
 [link to sandbox]
-
-## Issues, suggestions and feature requests
-[link to GitHub issues]
 
 ## Development and contribution
 
