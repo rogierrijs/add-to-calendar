@@ -105,7 +105,7 @@ export function AddToCalendar(props) {
                 name="calType"
                 id='ICal'
                 value={calType}
-                checked={calType == "ICal"}
+                checked={calType == "ICal"} 
               />
               <label for="ICal">iCalendar</label>
             </div>
