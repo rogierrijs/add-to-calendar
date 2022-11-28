@@ -11,7 +11,7 @@ Date.prototype.addHours= function(h){
 
 export function AddToCalendar(props) {
     const { valueStartDateAttribute, valueEndDateAttribute,locationAttribute,descriptionAttribute, subjectAttribute,buttonCaption,bootstrapStyle } = props;
-    const [calType, setCalType] = useState("ICal"); //create local variabele caltype en functie setCaltype, gebruikmakend van useState
+    const [calType, setCalType] = useState(); //create local variabele caltype en functie setCaltype, gebruikmakend van useState
 
     
     function createConfig() {
@@ -81,9 +81,9 @@ export function AddToCalendar(props) {
             window.open(createYahooCalendar()); 
             break;
             case "Outlook":
-              window.open(createOutlookCalendar());
+              createICalendar();
               break;
-              case "Office365":
+              case "MSCalendar":
                 window.open(createOffice365Calendar());
                 break;
               case "ICal":
@@ -95,69 +95,77 @@ export function AddToCalendar(props) {
     }
 
     return (
-    <div class='add-to-calendar-container col'>
-      <div class='row'>
-        <div class = 'mx-radiogroup'>
-        <div class = 'radio' onClick={() => {setCalType("ICal");}}> 
-            <input
-                      type="radio"
-                      name="calType"
-                      id = 'ICal'
-                      value={calType}
-                      checked={calType == "ICal"}
-                    />
-                                         <label for="ICal">ICalendar</label>
+      <div class='add-to-calendar-container col'>
+        <div class='row'>
+          <div class='mx-radiogroup'>
 
-        </div>
-          <div class = 'radio' onClick={() => {setCalType("Google");}}> 
-      <input
+            <div class='radio' onClick={() => { setCalType("ICal"); }}>
+              <input
+                type="radio"
+                name="calType"
+                id='ICal'
+                value={calType}
+                checked={calType == "ICal"}
+              />
+              <label for="ICal">iCalendar</label>
+            </div>
+
+            <div class='radio' onClick={() => { setCalType("Google"); }}>
+              <input
                 type="radio"
                 name="calType"
                 value={calType}
-                id = 'Google'
+                id='Google'
                 checked={calType == "Google"}
-             
+
               />
               <label for="Google">Google Calendar</label>
+            </div>
+
+            <div class='radio' onClick={() => { setCalType("Outlook"); }}>
+              <input
+                type="radio"
+                name="calType"
+                value={calType}
+                id='Outlook'
+                checked={calType == "Outlook"}
+              />
+              <label for="Outlook">Outlook</label>
+            </div>
+
+            <div class='radio' onClick={() => { setCalType("Yahoo"); }}>
+              <input
+                type="radio"
+                name="calType"
+                value={calType}
+                id='Yahoo'
+                checked={calType == "Yahoo"}
+              />
+              <label for="Yahoo">Yahoo! Calendar</label>
+
+
+            </div>
+            <div class='radio' onClick={() => { setCalType("MSCalendar"); }}>
+              <input
+                type="radio"
+                name="calType"
+                value={calType}
+                id='MSCalendar'
+                checked={calType == "MSCalendar"}
+              />
+              <label for="MSCalendar">Microsoft Calendar</label>
+            </div>
+
+
+          </div>
+
+
+
+        </div>
+        <div class='row'>
+        <button class={"spacing-outer-top-medium btn btn-" + bootstrapStyle} onClick={selectCalendar}>{buttonCaption.value ? buttonCaption.value : 'Submit'}</button>
+        </div>
       </div>
-      <div class = 'radio' onClick={() => {setCalType("ICal");}}> 
-            <input
-                      type="radio"
-                      name="calType"
-                      value={calType}
-                      id='Outlook'
-                      checked={calType == "ICal"}
-                    />
-                                         <label for="Outlook">Outlook</label>
-
-        </div>
-       <div class = 'radio' onClick={() => {setCalType("Yahoo");}}> 
-            <input
-                      type="radio"
-                      name="calType"
-                      value={calType}
-                      id = 'Yahoo'
-                      checked={calType == "Yahoo"}
-                     
-                    />
-                    <label for="Yahoo">Yahoo! Calendar</label>
-        </div>
-        <div class = 'radio' onClick={() => {setCalType("Outlook");}}> 
-            <input
-                      type="radio"
-                      name="calType"
-                      value={calType}
-                      id = 'MSCalendar'
-                      checked={calType == "MSCalendar"}
-                     
-                    />
-                    <label for="MSCalendar">Microsoft Calendar</label>
-        </div>
-
-</div>
-   </div>
-            <button class = {"spacing-outer-top-medium row btn btn-"+bootstrapStyle} onClick={selectCalendar}>{buttonCaption.value ? buttonCaption.value:'Submit'}</button>
-  </div>
 
     );
        
